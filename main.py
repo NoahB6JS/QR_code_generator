@@ -1,4 +1,5 @@
 import tkinter as tk
+import segno # QR code module
 
 root = tk.Tk()
 root.geometry("400x250")
@@ -10,7 +11,11 @@ text_title.set("QR CODE GENERATOR")
 #collecting widget data
 def get_url():
     url = entry.get()
-    print(url)
+    create_QR(url)
+    
+def create_QR(url):
+    qr = segno.make_qr(url)
+    qr.save("your_qr_url.png", scale = 10)
 
 label = tk.Label(root,
                  textvariable=text_title,
